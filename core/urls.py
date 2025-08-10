@@ -17,8 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from backend.alerts.coding.api_views import urls as urls_alerts_site
-
+from backend.alerts.views import home
 urlpatterns = [
+    path('', home, name='home'),
     path('admin/', admin.site.urls),
     path('api/', include(urls_alerts_site)),
 ]

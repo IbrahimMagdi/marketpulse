@@ -1,9 +1,51 @@
+# Python environment
 venv/
+ENV/
+env/
+
+# Environment variables
 .env
+
+# IDE files
 .idea/
+.vscode/
+
+# Byte-compiled / optimized / DLL files
 __pycache__/
+*.py[cod]
+*$py.class
+
+# Django stuff:
+*.log
+*.pot
 *.pyc
 *.pyo
 *.pyd
-.vercel
-،DS_Store
+
+# Django migrations (ignore all migration Python files)
+**/migrations/*.py
+**/migrations/*.pyc
+
+# SQLite database
+*.sqlite3
+
+# Static files collected
+staticfiles/
+
+# Media files (optional, if you store user uploads)
+media/
+
+# macOS files
+.DS_Store
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Logs
+logs/
+*.log
+
+# Python cache files
+*.cache

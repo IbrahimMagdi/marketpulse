@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="csrf-token" content="{{ csrf_token }}">
+  <title>MarketPulse - Real-Time Stock Monitoring</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Tajawal', sans-serif;
+    }
+
+    :root {
+      --primary: #87ceeb;
+      --secondary: #40e0d0;
+      --accent: #98fb98;
+      --success: #00fa9a;
+      --info: #20b2aa;
+      --warning: #48d1cc;
+      --danger: #5f9ea0;
+      --dark: #2f4f4f;
+      --light: #f0ffff;
+      --text: #2c3e50;
+      --card-bg: rgba(255, 255, 255, 0.95);
+      --gradient-1: linear-gradient(135deg, #87ceeb 0%, #40e0d0 100%);
+      --gradient-2: linear-gradient(135deg, #40e0d0 0%, #98fb98 100%);
+      --gradient-3: linear-gradient(135deg, #87ceeb 0%, #20b2aa 100%);
+      --gradient-4: linear-gradient(135deg, #98fb98 0%, #00fa9a 100%);
+    }
+
+    body {
+      background: linear-gradient(135deg, #87ceeb 0%, #40e0d0 50%, #98fb98 100%);
+      background-size: 400% 400%;
+      animation: gradientBG 20s ease infinite;
+      color: var(--light);
+      min-height: 100vh;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .header {
+      text-align: center;
+      padding: 40px 20px 50px;
+      animation: slideDown 1s ease;
+    }
+
+    @keyframes slideDown {
+      from {
+        transform: translateY(-100px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 25px;
+      margin-bottom: 25px;
+    }
+
+    .logo-icon {
+      font-size: 5rem;
+      background: var(--gradient-2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: pulse 2s infinite;
+      filter: drop-shadow(0 0 20px rgba(64, 224, 208, 0.6));
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+      100% { transform: scale(1); }
+    }
+
+    .logo-text {
+      font-size: 3.5rem;
+      font-weight: 800;
+      background: var(--gradient-4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 30px rgba(152, 251, 152, 0.5);
+    }
+
+    .subtitle {
+      font-size: 1.4rem;
+      color: #f0ffff;
+      font-weight: 500;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .stocks-section {
+      background: var(--card-bg);
+      backdrop-filter: blur(20px);
+      border-radius: 25px;
+      padding: 40px;
+      margin-bottom: 50px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      animation: slideUp 1.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stocks-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: var(--gradient-1);
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 30px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 0;
+      width: 100px;
+      height: 5px;
+      background: var(--gradient-2);
+      border-radius: 3px;
+    }
+
+    .stocks-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 20px;
+    }
+
+    .stocks-table th {
+      background: var(--gradient-1);
+      color: white;
+      font-weight: 700;
+      padding: 25px 30px;
+      text-align: left;
+      font-size: 1.3rem;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+      position: relative;
+    }
+
+    .stocks-table th:first-child {
+      border-radius: 20px 0 0 20px;
+    }
+
+    .stocks-table th:last-child {
+      border-radius: 0 20px 20px 0;
+    }
+
+    .stocks-table td {
+      background: white;
+      padding: 25px 30px;
+      font-size: 1.2rem;
+      color: var(--text);
+      font-weight: 600;
+      text-align: left;
+      position: relative;
+    }
+
+    .stocks-table tbody tr td:first-child {
+      border-radius: 20px 0 0 20px;
+      background: var(--gradient-3);
+      color: white;
+      font-weight: 800;
+      font-size: 1.4rem;
+    }
+
+    .stocks-table tbody tr td:nth-child(2) {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      font-weight: 600;
+    }
+
+    .stocks-table tbody tr td:last-child {
+      border-radius: 0 20px 20px 0;
+      background: var(--gradient-4);
+      color: white;
+      font-weight: 800;
+      font-size: 1.4rem;
+    }
+
+    .stock-row {
+      transition: all 0.4s ease;
+      cursor: pointer;
+      animation: fadeInRow 0.6s ease forwards;
+      opacity: 0;
+      position: relative;
+    }
+
+    @keyframes fadeInRow {
+      to { opacity: 1; }
+    }
+
+    .stock-row:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .stock-row:nth-child(odd) td:nth-child(2) {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    }
+
+    .stock-row:nth-child(even) td:nth-child(2) {
+      background: linear-gradient(135deg, #ffffff 0%, #f1f3f4 100%);
+    }
+
+    .stock-symbol {
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    .stock-symbol i {
+      font-size: 1.5rem;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-5px); }
+    }
+
+    .price-cell {
+      font-weight: 800;
+      font-size: 1.4rem;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    .loading-cell, .no-data-cell {
+      text-align: center;
+      padding: 60px;
+      background: var(--gradient-3);
+      border-radius: 20px;
+    }
+
+    .loading-spinner, .no-data-icon {
+      font-size: 3rem;
+      color: white;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .loading-text, .no-data-text {
+      color: white;
+      font-size: 1.3rem;
+      font-weight: 600;
+      display: block;
+    }
+
+    .chart-container {
+      background: var(--card-bg);
+      backdrop-filter: blur(20px);
+      border-radius: 25px;
+      padding: 40px;
+      margin-bottom: 50px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      animation: slideUp 1.5s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .chart-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: var(--gradient-2);
+    }
+
+    .chart-wrapper {
+      height: 450px;
+      position: relative;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 40px;
+      color: #f0ffff;
+      font-size: 1.2rem;
+      margin-top: 30px;
+      background: rgba(47, 79, 79, 0.7);
+      border-radius: 25px;
+      backdrop-filter: blur(15px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .footer a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-weight: 600;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+      color: var(--success);
+      text-shadow: 0 0 10px rgba(79, 172, 254, 0.5);
+    }
+
+    .notification {
+      position: fixed;
+      top: 30px;
+      right: 30px;
+      padding: 20px 25px;
+      border-radius: 15px;
+      color: white;
+      font-weight: 700;
+      z-index: 1000;
+      max-width: 350px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .notification.success {
+      background: linear-gradient(135deg, #98fb98 0%, #00fa9a 100%);
+    }
+
+    .notification.error {
+      background: linear-gradient(135deg, #40e0d0 0%, #98fb98 100%);
+    }
+
+    .notification.info {
+      background: linear-gradient(135deg, #87ceeb 0%, #20b2aa 100%);
+    }
+
+    .notification.slide-in {
+      animation: slideInNotification 0.4s ease forwards;
+    }
+
+    .notification.slide-out {
+      animation: slideOutNotification 0.4s ease forwards;
+    }
+
+    @keyframes slideInNotification {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideOutNotification {
+      from {
+        transform: translateX(0);
+        opacity: 1;
+      }
+      to {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+    }
+
+    .refresh-button {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--gradient-1);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 15px 30px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .refresh-button:hover:not(:disabled) {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .refresh-button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .glow-effect {
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { box-shadow: 0 0 20px rgba(64, 224, 208, 0.5); }
+      to { box-shadow: 0 0 40px rgba(64, 224, 208, 0.8); }
+    }
+
+    @media (max-width: 768px) {
+      .logo-text {
+        font-size: 2.5rem;
+      }
+
+      .subtitle {
+        font-size: 1.2rem;
+      }
+
+      .stocks-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+
+      .chart-wrapper {
+        height: 350px;
+      }
+
+      .stocks-section, .chart-container {
+        padding: 25px;
+      }
+
+      .notification {
+        right: 15px;
+        left: 15px;
+        max-width: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header {
+        padding: 30px 15px 40px;
+      }
+
+      .logo-text {
+        font-size: 2rem;
+      }
+
+      .stocks-table th,
+      .stocks-table td {
+        padding: 15px 20px;
+        font-size: 1rem;
+      }
+
+      body {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="logo">
+        <i class="fas fa-chart-line logo-icon"></i>
+        <div class="logo-text">MarketPulse</div>
+      </div>
+      <p class="subtitle">Real-Time Stock Monitoring</p>
+    </header>
+
+    <section class="stocks-section glow-effect">
+      <h2 class="section-title">Current Stock Prices</h2>
+      <table class="stocks-table">
+        <thead>
+          <tr>
+            <th>Symbol</th>
+            <th>Company Name</th>
+            <th>Current Price</th>
+          </tr>
+        </thead>
+        <tbody id="stocks-tbody">
+        </tbody>
+      </table>
+    </section>
+
+    <section class="chart-container glow-effect">
+      <h2 class="section-title">Stock Price Chart</h2>
+      <div class="chart-wrapper">
+        <canvas id="stockChart"></canvas>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>© 2024 MarketPulse. All rights reserved. | Market pulse at your fingertips 📈</p>
+    </footer>
+  </div>
+
+  <button class="refresh-button" id="refreshBtn">
+    <i class="fas fa-sync-alt"></i>
+    Refresh Data
+  </button>
+
+  <script>
+    const stocksFromDjango = {{ stocks|safe }};
+
+    let stocks = stocksFromDjango || [];
+    let stockChart;
+    let isLoading = false;
+
+    function generateRandomPrice(basePrice) {
+      const variation = (Math.random() - 0.5) * 0.1;
+      return Math.round((basePrice * (1 + variation)) * 100) / 100;
+    }
+
+    async function fetchStocks() {
+      try {
+        isLoading = true;
+        updateRefreshButton();
+
+        const response = await fetch('/api/stocks/');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        const updatedStocks = (data.results || data || []).map(stock => ({
+          symbol: stock.symbol,
+          name: stock.name,
+          price: stock.price,
+          lastUpdated: stock.last_updated || new Date().toISOString()
+        }));
+
+        return updatedStocks;
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        showNotification('Failed to fetch stock data', 'error');
+        return stocks.map(stock => ({
+          ...stock,
+          price: stock.price ? generateRandomPrice(stock.price) : null,
+          lastUpdated: new Date().toISOString()
+        }));
+      } finally {
+        isLoading = false;
+        updateRefreshButton();
+      }
+    }
+
+    function updateRefreshButton() {
+      const refreshBtn = document.getElementById('refreshBtn');
+      const icon = refreshBtn.querySelector('i');
+
+      if (isLoading) {
+        refreshBtn.disabled = true;
+        icon.className = 'fas fa-spinner fa-spin';
+        refreshBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+      } else {
+        refreshBtn.disabled = false;
+        refreshBtn.innerHTML = '<i class="fas fa-sync-alt"></i> Refresh Data';
+      }
+    }
+
+    function renderStocks() {
+      const tableBody = document.getElementById('stocks-tbody');
+
+      if (isLoading) {
+        tableBody.innerHTML = `
+          <tr>
+            <td colspan="3" class="loading-cell">
+              <i class="fas fa-spinner fa-spin loading-spinner"></i>
+              <span class="loading-text">Loading stock data...</span>
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      if (stocks.length === 0) {
+        tableBody.innerHTML = `
+          <tr>
+            <td colspan="3" class="no-data-cell">
+              <i class="fas fa-chart-line no-data-icon"></i>
+              <span class="no-data-text">No stock data available</span>
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      tableBody.innerHTML = '';
+      stocks.forEach((stock, index) => {
+        const row = document.createElement('tr');
+        row.className = 'stock-row';
+        row.style.animationDelay = `${index * 0.15}s`;
+        row.innerHTML = `
+          <td>
+            <div class="stock-symbol">
+              <i class="fas fa-building"></i>
+              ${stock.symbol}
+            </div>
+          </td>
+          <td>${stock.name || 'N/A'}</td>
+          <td class="price-cell">$${stock.price ? stock.price.toFixed(2) : 'N/A'}</td>
+        `;
+        tableBody.appendChild(row);
+      });
+    }
+
+    function createStockChart() {
+      const ctx = document.getElementById('stockChart').getContext('2d');
+
+      if (stockChart) {
+        stockChart.destroy();
+      }
+
+      if (stocks.length === 0) {
+        ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+        ctx.font = '18px Tajawal';
+        ctx.fillStyle = '#6c757d';
+        ctx.textAlign = 'center';
+        ctx.fillText(
+          'No data available for chart',
+          ctx.canvas.width / 2,
+          ctx.canvas.height / 2
+        );
+        return;
+      }
+
+      const labels = stocks.map(stock => stock.symbol);
+      const prices = stocks.map(stock => stock.price || 0);
+
+      const gradientColors = [
+        'rgba(135, 206, 235, 0.8)',
+        'rgba(64, 224, 208, 0.8)',
+        'rgba(152, 251, 152, 0.8)',
+        'rgba(0, 250, 154, 0.8)',
+        'rgba(32, 178, 170, 0.8)',
+        'rgba(72, 209, 204, 0.8)',
+        'rgba(95, 158, 160, 0.8)'
+      ];
+
+      const backgroundColors = prices.map((_, index) =>
+        gradientColors[index % gradientColors.length]
+      );
+
+      const borderColors = backgroundColors.map(color =>
+        color.replace('0.8', '1')
+      );
+
+      stockChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Stock Price ($)',
+            data: prices,
+            backgroundColor: backgroundColors,
+            borderColor: borderColors,
+            borderWidth: 3,
+            hoverOffset: 20
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: {
+                font: {
+                  size: 14,
+                  weight: 'bold'
+                },
+                color: '#495057',
+                padding: 25,
+                usePointStyle: true
+              }
+            },
+            tooltip: {
+              backgroundColor: 'rgba(0, 0, 0, 0.9)',
+              titleColor: '#fff',
+              bodyColor: '#fff',
+              borderColor: 'rgba(255, 255, 255, 0.3)',
+              borderWidth: 1,
+              cornerRadius: 10,
+              displayColors: true,
+              callbacks: {
+                label: function(context) {
+                  const stockIndex = context.dataIndex;
+                  const stock = stocks[stockIndex];
+                  if (!stock) return '';
+                  return `${stock.symbol}: $${(stock.price || 0).toFixed(2)}`;
+                }
+              }
+            }
+          },
+          animation: {
+            animateRotate: true,
+            animateScale: true,
+            duration: 2000,
+            easing: 'easeOutBounce'
+          }
+        }
+      });
+    }
+
+    function showNotification(message, type = 'info') {
+      const notification = document.createElement('div');
+      notification.className = `notification ${type} slide-in`;
+
+      const getIcon = () => {
+        switch (type) {
+          case 'success':
+            return 'fas fa-check-circle';
+          case 'error':
+            return 'fas fa-exclamation-triangle';
+          default:
+            return 'fas fa-info-circle';
+        }
+      };
+
+      notification.innerHTML = `
+        <i class="${getIcon()}"></i>
+        ${message}
+      `;
+
+      document.body.appendChild(notification);
+
+      setTimeout(() => {
+        notification.className = `notification ${type} slide-out`;
+        setTimeout(() => notification.remove(), 400);
+      }, 4000);
+    }
+
+    async function refreshStocks() {
+      const fetchedStocks = await fetchStocks();
+      if (fetchedStocks.length > 0) {
+        stocks = fetchedStocks;
+        renderStocks();
+        createStockChart();
+        showNotification('Stock data refreshed successfully!', 'success');
+        return true;
+      } else {
+        showNotification('Failed to refresh stock data', 'error');
+        return false;
+      }
+    }
+
+    async function initializePage() {
+      if (stocks.length > 0) {
+        renderStocks();
+        createStockChart();
+        showNotification('Welcome to MarketPulse! Stock data loaded successfully.', 'success');
+      } else {
+        renderStocks();
+
+        const fetchedStocks = await fetchStocks();
+        if (fetchedStocks.length > 0) {
+          stocks = fetchedStocks;
+          renderStocks();
+          createStockChart();
+          showNotification('Stock data loaded successfully!', 'success');
+        } else {
+          showNotification('Unable to load stock data', 'error');
+        }
+      }
+    }
+
+    async function refreshFromServer() {
+      if (isLoading) return;
+
+      const fetchedStocks = await fetchStocks();
+      if (fetchedStocks.length > 0) {
+        stocks = fetchedStocks;
+        renderStocks();
+        createStockChart();
+        showNotification('Stock data updated successfully!', 'success');
+      } else {
+        showNotification('Failed to update stock data', 'error');
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', initializePage);
+
+    document.getElementById('refreshBtn').addEventListener('click', () => {
+      refreshFromServer();
+    });
+
+    setInterval(async () => {
+      if (!isLoading) {
+        refreshFromServer();
+      }
+    }, 30000);
+
+    document.addEventListener('click', (e) => {
+      if (e.target.closest('.stock-row')) {
+        const row = e.target.closest('.stock-row');
+        const symbolElement = row.querySelector('.stock-symbol');
+        if (symbolElement) {
+          const symbol = symbolElement.textContent.trim();
+          showNotification(`Clicked on ${symbol} stock`, 'info');
+        }
+      }
+    });
+  </script>
+</body>
+</html>
