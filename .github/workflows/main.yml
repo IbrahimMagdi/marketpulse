@@ -49,6 +49,16 @@ jobs:
             echo "🚀 Restarting Gunicorn"
             sudo systemctl restart gunicorn
 
+            echo "🔍 Checking Gunicorn status"
+            sudo systemctl status gunicorn
+
+            echo "📂 Listing socket directory"
+            ls -l /run/gunicorn/
+            ls -l /home/ubuntu/marketpulse/
+
+            echo "📍 Current working directory"
+            pwd
+
             echo "⚙️ Restarting Celery Worker"
             sudo systemctl restart celery-worker
 
@@ -56,4 +66,3 @@ jobs:
             sudo systemctl restart celery-beat
 
             echo "✅ Deployment completed successfully!"
-
