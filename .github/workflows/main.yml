@@ -23,14 +23,36 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           script_stop: true
+          debug: true
           script: |
+            set -e  # Stop on first error
+
+            echo "📁 Moving to project directory"
             cd /home/ubuntu/marketpulse
+
+            echo "🔄 Fetching latest code"
             git fetch origin
             git reset --hard origin/main
+
+            echo "🐍 Activating virtualenv"
             source venv/bin/activate
+
+            echo "📦 Installing requirements"
             pip install -r requirements.txt
+
+            echo "🧬 Running migrations"
             python manage.py migrate
+
+            echo "🎨 Collecting static files"
             python manage.py collectstatic --noinput
+
+            echo "🚀 Restarting Gunicorn"
             sudo systemctl restart gunicorn
+
+            echo "⚙️ Restarting Celery Worker"
             sudo systemctl restart celery-worker
+
+            echo "⏰ Restarting Celery Beat"
             sudo systemctl restart celery-beat
+
+            echo "✅ Deployment completed successfully!"
