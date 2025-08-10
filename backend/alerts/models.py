@@ -38,7 +38,7 @@ class Alert(models.Model):
     condition_met_since = models.DateTimeField(blank=True, null=True)
 
     def __str__(self):
-        return f"{self.user.username} - {self.stock.symbol} - {self.get_alert_type_display()}"
+        return f"{self.user.first_name} - {self.stock.symbol}"
 
 
 class TriggeredAlert(models.Model):
