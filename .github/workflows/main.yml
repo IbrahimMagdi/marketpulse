@@ -56,3 +56,4 @@ jobs:
             sudo systemctl restart celery-beat
 
             echo "✅ Deployment completed successfully!"
+
