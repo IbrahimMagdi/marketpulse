@@ -1,4 +1,4 @@
-from ..sign_up.base_validator import BaseValidator
+from ...base_validator import BaseValidator
 from  extension.string import Extension
 from .....models import User
 

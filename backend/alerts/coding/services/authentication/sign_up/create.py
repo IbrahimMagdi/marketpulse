@@ -1,11 +1,9 @@
-from .base_validator import MessageHelper
+from ...base_validator import *
 from .name_validator import NameValidator
 from .email_validator import EmailValidator
 from .password_validator import PasswordValidator
 from .....models import *
 from rest_framework import status
-
-from rest_framework.authtoken.models import Token
 import secrets, string
 from rest_framework_simplejwt.tokens import RefreshToken
 

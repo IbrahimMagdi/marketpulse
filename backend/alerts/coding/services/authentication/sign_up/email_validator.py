@@ -1,6 +1,6 @@
 from extension.string import Extension
 from .....models import User
-from .base_validator import BaseValidator
+from ...base_validator import BaseValidator
 
 class EmailValidator(BaseValidator):
     def __init__(self, value, msg_helper, custom_check=None):

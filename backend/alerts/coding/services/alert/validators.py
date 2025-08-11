@@ -1,5 +1,5 @@
 from backend.alerts.models import Stock
-from backend.alerts.coding.services.base import BaseValidator
+from backend.alerts.coding.services.base_validator import BaseValidator
 from datetime import timedelta
 
 class AlertValidator(BaseValidator):

@@ -1,5 +1,5 @@
 from ....models import Stock
-from ..base import BaseValidator
+from ..base_validator import BaseValidator
 class StockValidator(BaseValidator):
     def validate(self):
         try:

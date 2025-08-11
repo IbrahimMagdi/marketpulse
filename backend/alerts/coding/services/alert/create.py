@@ -1,8 +1,7 @@
 import json
 from .validators import AlertValidator
 from ....models import Alert
-from ..base import MessageHelper
-from datetime import timedelta
+from ..base_validator import MessageHelper
 class AlertCreateService:
     def __init__(self, request):
         self.request = request

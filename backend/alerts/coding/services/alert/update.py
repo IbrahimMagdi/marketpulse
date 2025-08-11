@@ -1,7 +1,7 @@
 import json
 from .validators import AlertValidator
 from ....models import Alert
-from ..base import MessageHelper
+from ..base_validator import MessageHelper
 
 class AlertUpdateService:
     def __init__(self, request):

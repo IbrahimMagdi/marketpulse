@@ -15,7 +15,7 @@ class TriggeredAlertListService:
         self.response_data = {}
 
     def execute(self):
-        triggered_alerts = TriggeredAlert.objects.filter(alert__user=self.request.user)
+        triggered_alerts = TriggeredAlert.objects.filter(alert__user=self.request.user).order_by('-triggered_at')
         for triggered_alert in triggered_alerts:
             send_item = {
                 "id": triggered_alert.id,

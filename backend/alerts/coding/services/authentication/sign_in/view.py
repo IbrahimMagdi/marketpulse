@@ -1,4 +1,4 @@
-from ..sign_up.base_validator import MessageHelper
+from ...base_validator import MessageHelper
 from .user_name import UserNameAuthenticator
 from .password_validator import PasswordAuthenticator
 from rest_framework import status

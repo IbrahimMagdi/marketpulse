@@ -1,0 +1,1598 @@
+{
+	"info": {
+		"_postman_id": "4ab2ab41-7192-444c-a963-c009bdbfe23b",
+		"name": "marketpulse",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20562616"
+	},
+	"item": [
+		{
+			"name": "Authorization",
+			"item": [
+				{
+					"name": "sign-up",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ln",
+								"value": "ar",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "TEST1",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "penep62252@elobits.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Aq11ssdsd#@!",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/sign-up",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"sign-up"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "http://127.0.0.1:8000/api",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "web",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "subject",
+											"value": "mo",
+											"type": "text"
+										},
+										{
+											"key": "created_dt",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "views",
+											"value": "20",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 15 May 2022 08:02:22 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.10.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS, GET"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "600"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"re_status\": 205,\n    \"re_data\": [\n        {\n            \"name\": \"web programing\",\n            \"description\": \"this board web\",\n            \"t\": {\n                \"subject\": \"ali\",\n                \"created_dt\": \"2022-04-25T13:33:15.786396Z\",\n                \"views\": 0\n            }\n        },\n        {\n            \"name\": \"testboard\",\n            \"description\": \"testboardserializer\",\n            \"t\": {\n                \"subject\": \"we\",\n                \"created_dt\": \"2022-05-08T20:26:54.733820Z\",\n                \"views\": 10\n            }\n        },\n        {\n            \"name\": \"bord\",\n            \"description\": \"update\",\n            \"t\": {}\n        },\n        {\n            \"name\": \"aa\",\n            \"description\": \"ss\",\n            \"t\": {}\n        },\n        {\n            \"name\": \"test api bord\",\n            \"description\": \"test add api desc\",\n            \"t\": {}\n        },\n        {\n            \"name\": \"test class api\",\n            \"description\": \"wwwwwwwwwwwwwwwwwoooooooowwwwwwwwwwwww\",\n            \"t\": {\n                \"subject\": \"bn\",\n                \"created_dt\": \"2022-05-08T20:31:12.383624Z\",\n                \"views\": 5\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "refresh",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ln",
+								"value": "ar",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "refresh",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc1NDkyMjI0MCwiaWF0IjoxNzU0ODM1ODQwLCJqdGkiOiJkMzk1MThiMGJjZjk0ZDA3OGMyNTMxYTk3NGYxYTU4ZiIsInVzZXJfaWQiOiIyIn0.q8gYsmFHkDMaN1Kkxe14mK9y9Y7K7-jUpTVu4FXEfsg",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}api/auth/token/refresh",
+							"host": [
+								"{{baseUrl}}api"
+							],
+							"path": [
+								"auth",
+								"token",
+								"refresh"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "http://127.0.0.1:8000/api",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "web",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "subject",
+											"value": "mo",
+											"type": "text"
+										},
+										{
+											"key": "created_dt",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "views",
+											"value": "20",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 15 May 2022 08:02:22 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.10.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS, GET"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "600"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"re_status\": 205,\n    \"re_data\": [\n        {\n            \"name\": \"web programing\",\n            \"description\": \"this board web\",\n            \"t\": {\n                \"subject\": \"ali\",\n                \"created_dt\": \"2022-04-25T13:33:15.786396Z\",\n                \"views\": 0\n            }\n        },\n        {\n            \"name\": \"testboard\",\n            \"description\": \"testboardserializer\",\n            \"t\": {\n                \"subject\": \"we\",\n                \"created_dt\": \"2022-05-08T20:26:54.733820Z\",\n                \"views\": 10\n            }\n        },\n        {\n            \"name\": \"bord\",\n            \"description\": \"update\",\n            \"t\": {}\n        },\n        {\n            \"name\": \"aa\",\n            \"description\": \"ss\",\n            \"t\": {}\n        },\n        {\n            \"name\": \"test api bord\",\n            \"description\": \"test add api desc\",\n            \"t\": {}\n        },\n        {\n            \"name\": \"test class api\",\n            \"description\": \"wwwwwwwwwwwwwwwwwoooooooowwwwwwwwwwwww\",\n            \"t\": {\n                \"subject\": \"bn\",\n                \"created_dt\": \"2022-05-08T20:31:12.383624Z\",\n                \"views\": 5\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "sign-in",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ln",
+								"value": "ar",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "penep62252@elobits.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Aq11ssdsd#@!",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}api/auth/sign-in",
+							"host": [
+								"{{baseUrl}}api"
+							],
+							"path": [
+								"auth",
+								"sign-in"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "http://127.0.0.1:8000/api",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "web",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "subject",
+											"value": "mo",
+											"type": "text"
+										},
+										{
+											"key": "created_dt",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "views",
+											"value": "20",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 15 May 2022 08:02:22 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.10.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS, GET"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "600"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"re_status\": 205,\n    \"re_data\": [\n        {\n            \"name\": \"web programing\",\n            \"description\": \"this board web\",\n            \"t\": {\n                \"subject\": \"ali\",\n                \"created_dt\": \"2022-04-25T13:33:15.786396Z\",\n                \"views\": 0\n            }\n        },\n        {\n            \"name\": \"testboard\",\n            \"description\": \"testboardserializer\",\n            \"t\": {\n                \"subject\": \"we\",\n                \"created_dt\": \"2022-05-08T20:26:54.733820Z\",\n                \"views\": 10\n            }\n        },\n        {\n            \"name\": \"bord\",\n            \"description\": \"update\",\n            \"t\": {}\n        },\n        {\n            \"name\": \"aa\",\n            \"description\": \"ss\",\n            \"t\": {}\n        },\n        {\n            \"name\": \"test api bord\",\n            \"description\": \"test add api desc\",\n            \"t\": {}\n        },\n        {\n            \"name\": \"test class api\",\n            \"description\": \"wwwwwwwwwwwwwwwwwoooooooowwwwwwwwwwwww\",\n            \"t\": {\n                \"subject\": \"bn\",\n                \"created_dt\": \"2022-05-08T20:31:12.383624Z\",\n                \"views\": 5\n            }\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "stocks",
+			"item": [
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "ln",
+								"value": "ar",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{baseUrl}}api/stocks/list?page=",
+							"host": [
+								"{{baseUrl}}api"
+							],
+							"path": [
+								"stocks",
+								"list"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "http://127.0.0.1:8000/api",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "web",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "subject",
+											"value": "mo",
+											"type": "text"
+										},
+										{
+											"key": "created_dt",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "views",
+											"value": "20",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 15 May 2022 08:02:22 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.10.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS, GET"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "600"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"re_status\": 205,\n    \"re_data\": [\n        {\n            \"name\": \"web programing\",\n            \"description\": \"this board web\",\n            \"t\": {\n                \"subject\": \"ali\",\n                \"created_dt\": \"2022-04-25T13:33:15.786396Z\",\n                \"views\": 0\n            }\n        },\n        {\n            \"name\": \"testboard\",\n            \"description\": \"testboardserializer\",\n            \"t\": {\n                \"subject\": \"we\",\n                \"created_dt\": \"2022-05-08T20:26:54.733820Z\",\n                \"views\": 10\n            }\n        },\n        {\n            \"name\": \"bord\",\n            \"description\": \"update\",\n            \"t\": {}\n        },\n        {\n            \"name\": \"aa\",\n            \"description\": \"ss\",\n            \"t\": {}\n        },\n        {\n            \"name\": \"test api bord\",\n            \"description\": \"test add api desc\",\n            \"t\": {}\n        },\n        {\n            \"name\": \"test class api\",\n            \"description\": \"wwwwwwwwwwwwwwwwwoooooooowwwwwwwwwwwww\",\n            \"t\": {\n                \"subject\": \"bn\",\n                \"created_dt\": \"2022-05-08T20:31:12.383624Z\",\n                \"views\": 5\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "details",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "ln",
+								"value": "ar",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{baseUrl}}api/stocks/details?symbol=pypl",
+							"host": [
+								"{{baseUrl}}api"
+							],
+							"path": [
+								"stocks",
+								"details"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "pypl"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "http://127.0.0.1:8000/api",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "web",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "subject",
+											"value": "mo",
+											"type": "text"
+										},
+										{
+											"key": "created_dt",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "views",
+											"value": "20",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 15 May 2022 08:02:22 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.10.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS, GET"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "600"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"re_status\": 205,\n    \"re_data\": [\n        {\n            \"name\": \"web programing\",\n            \"description\": \"this board web\",\n            \"t\": {\n                \"subject\": \"ali\",\n                \"created_dt\": \"2022-04-25T13:33:15.786396Z\",\n                \"views\": 0\n            }\n        },\n        {\n            \"name\": \"testboard\",\n            \"description\": \"testboardserializer\",\n            \"t\": {\n                \"subject\": \"we\",\n                \"created_dt\": \"2022-05-08T20:26:54.733820Z\",\n                \"views\": 10\n            }\n        },\n        {\n            \"name\": \"bord\",\n            \"description\": \"update\",\n            \"t\": {}\n        },\n        {\n            \"name\": \"aa\",\n            \"description\": \"ss\",\n            \"t\": {}\n        },\n        {\n            \"name\": \"test api bord\",\n            \"description\": \"test add api desc\",\n            \"t\": {}\n        },\n        {\n            \"name\": \"test class api\",\n            \"description\": \"wwwwwwwwwwwwwwwwwoooooooowwwwwwwwwwwww\",\n            \"t\": {\n                \"subject\": \"bn\",\n                \"created_dt\": \"2022-05-08T20:31:12.383624Z\",\n                \"views\": 5\n            }\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "alerts",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ln",
+								"value": "ar",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"stock\": \"TSLA\",\n    \"__comment_stock\": \"The stock symbol you want to monitor (e.g., Tesla)\",\n    \"alert_type\": \"DURATION\",\n    \"__comment_alert_type\": \"Type of alert: 'PRICE' triggers immediately, 'DURATION' triggers after duration\",\n    \"condition\": \"BELOW\",\n    \"__comment_condition\": \"'BELOW' means price is below threshold, 'ABOVE' means price is above threshold\",\n    \"threshold\": 600,\n    \"__comment_threshold\": \"The reference price value for comparison\",\n    \"duration\": 2,\n    \"__comment_duration\": \"Duration in hours condition must persist (only for 'DURATION' alert_type)\"\n}\n"
+						},
+						"url": {
+							"raw": "{{baseUrl}}api/alerts/create",
+							"host": [
+								"{{baseUrl}}api"
+							],
+							"path": [
+								"alerts",
+								"create"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "http://127.0.0.1:8000/api",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "web",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "subject",
+											"value": "mo",
+											"type": "text"
+										},
+										{
+											"key": "created_dt",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "views",
+											"value": "20",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 15 May 2022 08:02:22 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.10.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS, GET"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "600"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"re_status\": 205,\n    \"re_data\": [\n        {\n            \"name\": \"web programing\",\n            \"description\": \"this board web\",\n            \"t\": {\n                \"subject\": \"ali\",\n                \"created_dt\": \"2022-04-25T13:33:15.786396Z\",\n                \"views\": 0\n            }\n        },\n        {\n            \"name\": \"testboard\",\n            \"description\": \"testboardserializer\",\n            \"t\": {\n                \"subject\": \"we\",\n                \"created_dt\": \"2022-05-08T20:26:54.733820Z\",\n                \"views\": 10\n            }\n        },\n        {\n            \"name\": \"bord\",\n            \"description\": \"update\",\n            \"t\": {}\n        },\n        {\n            \"name\": \"aa\",\n            \"description\": \"ss\",\n            \"t\": {}\n        },\n        {\n            \"name\": \"test api bord\",\n            \"description\": \"test add api desc\",\n            \"t\": {}\n        },\n        {\n            \"name\": \"test class api\",\n            \"description\": \"wwwwwwwwwwwwwwwwwoooooooowwwwwwwwwwwww\",\n            \"t\": {\n                \"subject\": \"bn\",\n                \"created_dt\": \"2022-05-08T20:31:12.383624Z\",\n                \"views\": 5\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "ln",
+								"value": "ar",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseUrl}}api/alerts/list?page",
+							"host": [
+								"{{baseUrl}}api"
+							],
+							"path": [
+								"alerts",
+								"list"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "http://127.0.0.1:8000/api",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "web",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "subject",
+											"value": "mo",
+											"type": "text"
+										},
+										{
+											"key": "created_dt",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "views",
+											"value": "20",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 15 May 2022 08:02:22 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.10.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS, GET"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "600"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"re_status\": 205,\n    \"re_data\": [\n        {\n            \"name\": \"web programing\",\n            \"description\": \"this board web\",\n            \"t\": {\n                \"subject\": \"ali\",\n                \"created_dt\": \"2022-04-25T13:33:15.786396Z\",\n                \"views\": 0\n            }\n        },\n        {\n            \"name\": \"testboard\",\n            \"description\": \"testboardserializer\",\n            \"t\": {\n                \"subject\": \"we\",\n                \"created_dt\": \"2022-05-08T20:26:54.733820Z\",\n                \"views\": 10\n            }\n        },\n        {\n            \"name\": \"bord\",\n            \"description\": \"update\",\n            \"t\": {}\n        },\n        {\n            \"name\": \"aa\",\n            \"description\": \"ss\",\n            \"t\": {}\n        },\n        {\n            \"name\": \"test api bord\",\n            \"description\": \"test add api desc\",\n            \"t\": {}\n        },\n        {\n            \"name\": \"test class api\",\n            \"description\": \"wwwwwwwwwwwwwwwwwoooooooowwwwwwwwwwwww\",\n            \"t\": {\n                \"subject\": \"bn\",\n                \"created_dt\": \"2022-05-08T20:31:12.383624Z\",\n                \"views\": 5\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "details",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "ln",
+								"value": "ar",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseUrl}}api/alerts/details?alert_id=10",
+							"host": [
+								"{{baseUrl}}api"
+							],
+							"path": [
+								"alerts",
+								"details"
+							],
+							"query": [
+								{
+									"key": "alert_id",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "http://127.0.0.1:8000/api",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "web",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "subject",
+											"value": "mo",
+											"type": "text"
+										},
+										{
+											"key": "created_dt",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "views",
+											"value": "20",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 15 May 2022 08:02:22 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.10.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS, GET"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "600"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"re_status\": 205,\n    \"re_data\": [\n        {\n            \"name\": \"web programing\",\n            \"description\": \"this board web\",\n            \"t\": {\n                \"subject\": \"ali\",\n                \"created_dt\": \"2022-04-25T13:33:15.786396Z\",\n                \"views\": 0\n            }\n        },\n        {\n            \"name\": \"testboard\",\n            \"description\": \"testboardserializer\",\n            \"t\": {\n                \"subject\": \"we\",\n                \"created_dt\": \"2022-05-08T20:26:54.733820Z\",\n                \"views\": 10\n            }\n        },\n        {\n            \"name\": \"bord\",\n            \"description\": \"update\",\n            \"t\": {}\n        },\n        {\n            \"name\": \"aa\",\n            \"description\": \"ss\",\n            \"t\": {}\n        },\n        {\n            \"name\": \"test api bord\",\n            \"description\": \"test add api desc\",\n            \"t\": {}\n        },\n        {\n            \"name\": \"test class api\",\n            \"description\": \"wwwwwwwwwwwwwwwwwoooooooowwwwwwwwwwwww\",\n            \"t\": {\n                \"subject\": \"bn\",\n                \"created_dt\": \"2022-05-08T20:31:12.383624Z\",\n                \"views\": 5\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "ln",
+								"value": "ar",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"alert_id\": 2,\n     \"stock\": \"TSLA\",\n    \"alert_type\": \"DURATION\",\n    \"condition\": \"BELOW\",\n    \"threshold\": 600,\n    \"duration\": 2\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}api/alerts/update",
+							"host": [
+								"{{baseUrl}}api"
+							],
+							"path": [
+								"alerts",
+								"update"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "http://127.0.0.1:8000/api",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "web",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "subject",
+											"value": "mo",
+											"type": "text"
+										},
+										{
+											"key": "created_dt",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "views",
+											"value": "20",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 15 May 2022 08:02:22 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.10.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS, GET"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "600"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"re_status\": 205,\n    \"re_data\": [\n        {\n            \"name\": \"web programing\",\n            \"description\": \"this board web\",\n            \"t\": {\n                \"subject\": \"ali\",\n                \"created_dt\": \"2022-04-25T13:33:15.786396Z\",\n                \"views\": 0\n            }\n        },\n        {\n            \"name\": \"testboard\",\n            \"description\": \"testboardserializer\",\n            \"t\": {\n                \"subject\": \"we\",\n                \"created_dt\": \"2022-05-08T20:26:54.733820Z\",\n                \"views\": 10\n            }\n        },\n        {\n            \"name\": \"bord\",\n            \"description\": \"update\",\n            \"t\": {}\n        },\n        {\n            \"name\": \"aa\",\n            \"description\": \"ss\",\n            \"t\": {}\n        },\n        {\n            \"name\": \"test api bord\",\n            \"description\": \"test add api desc\",\n            \"t\": {}\n        },\n        {\n            \"name\": \"test class api\",\n            \"description\": \"wwwwwwwwwwwwwwwwwoooooooowwwwwwwwwwwww\",\n            \"t\": {\n                \"subject\": \"bn\",\n                \"created_dt\": \"2022-05-08T20:31:12.383624Z\",\n                \"views\": 5\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "ln",
+								"value": "ar",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "alert_id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}api/alerts/delete",
+							"host": [
+								"{{baseUrl}}api"
+							],
+							"path": [
+								"alerts",
+								"delete"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "http://127.0.0.1:8000/api",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "web",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "subject",
+											"value": "mo",
+											"type": "text"
+										},
+										{
+											"key": "created_dt",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "views",
+											"value": "20",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 15 May 2022 08:02:22 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.10.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS, GET"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "600"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"re_status\": 205,\n    \"re_data\": [\n        {\n            \"name\": \"web programing\",\n            \"description\": \"this board web\",\n            \"t\": {\n                \"subject\": \"ali\",\n                \"created_dt\": \"2022-04-25T13:33:15.786396Z\",\n                \"views\": 0\n            }\n        },\n        {\n            \"name\": \"testboard\",\n            \"description\": \"testboardserializer\",\n            \"t\": {\n                \"subject\": \"we\",\n                \"created_dt\": \"2022-05-08T20:26:54.733820Z\",\n                \"views\": 10\n            }\n        },\n        {\n            \"name\": \"bord\",\n            \"description\": \"update\",\n            \"t\": {}\n        },\n        {\n            \"name\": \"aa\",\n            \"description\": \"ss\",\n            \"t\": {}\n        },\n        {\n            \"name\": \"test api bord\",\n            \"description\": \"test add api desc\",\n            \"t\": {}\n        },\n        {\n            \"name\": \"test class api\",\n            \"description\": \"wwwwwwwwwwwwwwwwwoooooooowwwwwwwwwwwww\",\n            \"t\": {\n                \"subject\": \"bn\",\n                \"created_dt\": \"2022-05-08T20:31:12.383624Z\",\n                \"views\": 5\n            }\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "triggered",
+			"item": [
+				{
+					"name": "list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "ln",
+								"value": "ar",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{authToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{baseUrl}}api/triggered/list?page=",
+							"host": [
+								"{{baseUrl}}api"
+							],
+							"path": [
+								"triggered",
+								"list"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "http://127.0.0.1:8000/api",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "web",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "subject",
+											"value": "mo",
+											"type": "text"
+										},
+										{
+											"key": "created_dt",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "views",
+											"value": "20",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 15 May 2022 08:02:22 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.10.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS, GET"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "600"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"re_status\": 205,\n    \"re_data\": [\n        {\n            \"name\": \"web programing\",\n            \"description\": \"this board web\",\n            \"t\": {\n                \"subject\": \"ali\",\n                \"created_dt\": \"2022-04-25T13:33:15.786396Z\",\n                \"views\": 0\n            }\n        },\n        {\n            \"name\": \"testboard\",\n            \"description\": \"testboardserializer\",\n            \"t\": {\n                \"subject\": \"we\",\n                \"created_dt\": \"2022-05-08T20:26:54.733820Z\",\n                \"views\": 10\n            }\n        },\n        {\n            \"name\": \"bord\",\n            \"description\": \"update\",\n            \"t\": {}\n        },\n        {\n            \"name\": \"aa\",\n            \"description\": \"ss\",\n            \"t\": {}\n        },\n        {\n            \"name\": \"test api bord\",\n            \"description\": \"test add api desc\",\n            \"t\": {}\n        },\n        {\n            \"name\": \"test class api\",\n            \"description\": \"wwwwwwwwwwwwwwwwwoooooooowwwwwwwwwwwww\",\n            \"t\": {\n                \"subject\": \"bn\",\n                \"created_dt\": \"2022-05-08T20:31:12.383624Z\",\n                \"views\": 5\n            }\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "authToken",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU0NzQ4MjY4LCJpYXQiOjE3NTQ3NDQ2NjgsImp0aSI6IjQ5ZWRmM2FiNzBkMTRlZDFhYjY3NzBhOWVjNTY5MTQ2IiwidXNlcl9pZCI6IjMifQ.QTG8ryPW7QBGf84iZmmqI56fq9mLCm1QSwqESKITgqY",
+			"type": "string"
+		},
+		{
+			"key": "baseUrl",
+			"value": "http://13.62.72.179/",
+			"type": "string"
+		}
+	]
+}

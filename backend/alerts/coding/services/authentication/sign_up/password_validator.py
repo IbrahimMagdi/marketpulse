@@ -1,5 +1,5 @@
 from extension.string import Extension
-from .base_validator import BaseValidator
+from ...base_validator import BaseValidator
 
 class PasswordValidator(BaseValidator):
     def __init__(self, value, msg_helper):

@@ -1,5 +1,5 @@
 from ....models import Alert
-from ..base import *
+from ..base_validator import *
 
 class AlertValidator(BaseValidator):
     def __init__(self, user, value, msg_helper):
