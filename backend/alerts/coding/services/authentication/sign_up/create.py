@@ -13,8 +13,6 @@ class SignUpService:
         self.request = request
         self.ln = request.META.get("HTTP_LN", "en")
         self.msg_helper = MessageHelper(request, "authentication")
-        self.ty = request.headers.get('ty') or None
-        self.tk = request.headers.get('tk') or None
         self.name = self.email = self.password = None
 
 
@@ -50,7 +48,7 @@ class SignUpService:
             candidate = ''.join(secrets.choice(characters) for _ in range(16))
             if not User.objects.filter(username=candidate).exists():
                 return candidate
-        raise Exception("فشل في توليد اسم مستخدم فريد")
+        raise Exception("Failed to generate unique username")
 
     def create_user_account(self):
         return User.objects.create_user(
